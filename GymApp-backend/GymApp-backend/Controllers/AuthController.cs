@@ -3,8 +3,6 @@ using GymApp_backend.DTOs;
 using GymApp_backend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace GymApp_backend.Controllers
 {
@@ -17,24 +15,6 @@ namespace GymApp_backend.Controllers
         public AuthController(AppDbContext db)
         {
             _db = db;
-        }
-
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
-        {
-            var users = await _db.Users
-                .Include(u => u.Posts)
-                    .ThenInclude(p => p.Workout)
-                        .ThenInclude(w => w.WorkoutExercises)
-                            .ThenInclude(we => we.WorkoutSets)
-                .Include(u => u.Posts)
-                    .ThenInclude(p => p.Workout)
-                        .ThenInclude(w => w.WorkoutExercises)
-                            .ThenInclude(we => we.Exercise)
-                                .ThenInclude(e => e.MuscleGroups)
-                .ToListAsync();
-
-            return Ok(users);
         }
 
         [HttpPost("register")]
