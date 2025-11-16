@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Back & Frontend",
+    "Projects": [
+      {
+        "Path": "GymApp-backend\\GymApp-backend.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "GymApp-frontend\\GymApp-frontend.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
