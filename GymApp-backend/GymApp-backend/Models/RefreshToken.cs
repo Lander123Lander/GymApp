@@ -1,4 +1,6 @@
-﻿namespace GymApp_backend.Models
+﻿using System.Text.Json.Serialization;
+
+namespace GymApp_backend.Models
 {
     public class RefreshToken
     {
@@ -6,7 +8,10 @@
         public Guid UserID { get; set; }
 
         public string Token { get; set; } = string.Empty;
-        public DateTime IssuedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
         public DateTime ExpiresAt { get; set; }
+
+        [JsonIgnore]
+        public User User { get; set; }
     }
 }

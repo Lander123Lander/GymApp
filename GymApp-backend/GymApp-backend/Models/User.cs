@@ -1,4 +1,6 @@
-﻿namespace GymApp_backend.Models
+﻿using System.Text.Json.Serialization;
+
+namespace GymApp_backend.Models
 {
     public enum Role
     {
@@ -18,5 +20,8 @@
         public DateTime? DeletedAt { get; set; } = null;
 
         public ICollection<Post> Posts { get; set; }
+
+        [JsonIgnore]
+        public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
     }
 }

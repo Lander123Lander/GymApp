@@ -26,8 +26,7 @@ namespace GymApp_backend.DTOs
 
     public class LoginResponse
     {
-        public Guid UserID { get; set; }
-        public string Username { get; set; } = string.Empty;
-        public Role Role { get; set; }
+        public String AccessToken { get; set; }
+        public String RefreshToken { get; set; }
     }
 }

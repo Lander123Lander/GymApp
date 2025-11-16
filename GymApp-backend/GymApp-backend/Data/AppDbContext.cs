@@ -11,6 +11,8 @@ namespace GymApp_backend.Data
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options) { }
 
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
+
         public DbSet<User> Users { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Exercise> Exercises { get; set; }
@@ -24,6 +26,11 @@ namespace GymApp_backend.Data
             base.OnModelCreating(modelBuilder);
 
             DateTime dateTime = new DateTime(2025, 11, 15, 00, 00, 00, DateTimeKind.Utc);
+
+            modelBuilder.Entity<User>()
+        .HasMany(p => p.RefreshTokens)
+        .WithOne(w => w.User)
+        .HasForeignKey(w => w.UserID);
 
             modelBuilder.Entity<User>()
         .HasMany(p => p.Posts)

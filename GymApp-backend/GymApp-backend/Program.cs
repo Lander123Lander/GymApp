@@ -11,10 +11,11 @@ var connectionString = Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CON
     ? configuration.GetConnectionString("DockerConnection")
     : configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(connectionString));
 
 builder.Services.AddControllers();
+builder.Services.AddSingleton<JwtService>();
+builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
+
 
 builder.Services.AddSwaggerGen();
 
