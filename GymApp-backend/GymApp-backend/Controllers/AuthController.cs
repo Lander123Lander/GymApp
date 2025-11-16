@@ -56,14 +56,14 @@ namespace GymApp_backend.Controllers
         {
             var tokenEntry = await _db.RefreshTokens
                 .Include(t => t.User)
-                .FirstOrDefaultAsync(t => t.Token == refreshToken && t.ExpiresAt > DateTime.UtcNow);
+                .FirstOrDefaultAsync(t => t.Token == refreshToken && t.ExpiresAt > DateTime.UtcNow && t.RevokedAt == null);
 
             if (tokenEntry == null)
                 return Unauthorized("No valid token found");
 
             var user = tokenEntry.User;
 
-            _db.RefreshTokens.Remove(tokenEntry);
+            tokenEntry.RevokedAt = DateTime.UtcNow;
             await _db.SaveChangesAsync();
 
             return Ok(await CreateLoginResponseAsync(user));

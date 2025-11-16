@@ -45,7 +45,7 @@ public class JwtService
 
     public RefreshToken GenerateRefreshToken(User user)
     {
-        var randomBytes = new byte[64];
+        var randomBytes = new byte[int.Parse(_config["Jwt:RefreshTokenLength"])];
         using var rng = RandomNumberGenerator.Create();
         rng.GetBytes(randomBytes);
 
@@ -55,6 +55,7 @@ public class JwtService
             Token = Convert.ToBase64String(randomBytes),
             CreatedAt = DateTime.UtcNow,
             ExpiresAt = DateTime.UtcNow.AddDays(int.Parse(_config["Jwt:RefreshTokenExpirationDays"])),
+            RevokedAt = null
         };
     }
 }
