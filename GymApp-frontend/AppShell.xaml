@@ -4,11 +4,17 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:GymApp_frontend"
+    xmlns:pages="clr-namespace:GymApp_frontend.Pages"
     Title="GymApp_frontend">
 
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+
+    <ShellContent
+        Title="Login"
+        Route="login"
+        ContentTemplate="{DataTemplate pages:LoginPage}" />
 
 </Shell>
