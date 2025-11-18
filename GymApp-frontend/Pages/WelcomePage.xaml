@@ -21,24 +21,23 @@
             <Label 
                 Text="Don't have an account yet?"
                 FontSize="16"
-                HorizontalOptions="Center"
-                TextColor="{StaticResource Text2}" />
-            <Button 
-                Text="Login"
-                Style="{StaticResource ButtonPrimary}"
-                Clicked="OnLoginClicked" />
-        </VerticalStackLayout>
-
-        <VerticalStackLayout Spacing="4">
-            <Label 
-                Text="Already have an account?"
-                FontSize="16"
                 TextColor="{StaticResource Text2}"
                 HorizontalOptions="Center" />
             <Button 
                 Text="Create Account"
-                Style="{StaticResource ButtonGhost}"
+                Style="{StaticResource ButtonPrimary}"
                 Clicked="OnCreateAccountClicked" />
+        </VerticalStackLayout>
+        <VerticalStackLayout Spacing="4">
+            <Label 
+                Text="Already have an account?"
+                FontSize="16"
+                HorizontalOptions="Center"
+                TextColor="{StaticResource Text2}" />
+            <Button 
+                Text="Login"
+                Style="{StaticResource ButtonGhost}"
+                Clicked="OnLoginClicked" />
         </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
