@@ -27,5 +27,4 @@ README.md
 !.git/refs/heads/**
 
 .vs/
-appsettings.json
 appsettings.Development.json
