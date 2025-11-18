@@ -1,5 +1,6 @@
 ﻿using GymApp_backend.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace GymApp_backend.Data
 {
@@ -98,7 +99,8 @@ namespace GymApp_backend.Data
                 {
                     UserID = Guid.Parse("11111111-1111-1111-1111-111111111111"),
                     Username = "lander",
-                    Password = "aaa",
+                    Email = "lander.dirix@gmail.com",
+                    Password = "$2a$11$pD8UcWXtO4XHlfTru79GyOIup9AlGengdjPHH0PHJSCUu5BzbO81W",
                     Role = Role.Owner,
                     CreatedAt = dateTime,
                 },
@@ -106,14 +108,16 @@ namespace GymApp_backend.Data
                 {
                     UserID = Guid.Parse("22222222-2222-2222-2222-222222222222"),
                     Username = "admin",
-                    Password = "aaa",
+                    Email = "admin@gmail.com",
+                    Password = "$2a$11$3p2PTEd7H6nmx7CSzubeeOGnzByoGlj0UruRsTjvjRyABPR3ddT9.",
                     Role = Role.Admin,
                     CreatedAt = dateTime,
                 }, new User
                 {
                     UserID = Guid.Parse("33333333-3333-3333-3333-333333333333"),
                     Username = "user1",
-                    Password = "aaa",
+                    Email = "user1@gmail.com",
+                    Password = "$2a$11$OBGeZmMkyDpNVR3dtOw.ZewUKx.cNX1h / 50RvQI8BQxn4wwQpi9sK",
                     Role = Role.User,
                     CreatedAt = dateTime,
                 },
@@ -121,7 +125,8 @@ namespace GymApp_backend.Data
                 {
                     UserID = Guid.Parse("44444444-4444-4444-4444-444444444444"),
                     Username = "user2",
-                    Password = "aaa",
+                    Email = "user2@gmail.com",
+                    Password = "$2a$11$codkbLuMB4k2uo12DxxWWOSG6zqvmWGUKxi4cNkl.BSIUvTXN.RJe",
                     Role = Role.User,
                     CreatedAt = dateTime,
                 },
@@ -129,7 +134,8 @@ namespace GymApp_backend.Data
                 {
                     UserID = Guid.Parse("55555555-5555-5555-5555-555555555555"),
                     Username = "user3",
-                    Password = "aaa",
+                    Email = "user3@gmail.com",
+                    Password = "$2a$11$4h53DUPV7KHKr3cUkyJwiOavJiH / 3dO3IS9LK46AnrYi98P7wo7hu",
                     Role = Role.User,
                     CreatedAt = dateTime,
                 });

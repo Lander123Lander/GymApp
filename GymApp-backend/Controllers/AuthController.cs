@@ -3,7 +3,10 @@ using GymApp_backend.DTOs;
 using GymApp_backend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 
 namespace GymApp_backend.Controllers
 {
@@ -23,12 +26,19 @@ namespace GymApp_backend.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<LoginResponse>> Register([FromBody] RegisterRequest dto)
         {
-            if (await _db.Users.AnyAsync(u => u.Username == dto.Username))
-                return BadRequest("Username already exists.");
+            if (await _db.Users.AnyAsync(u => u.Email == dto.Email))
+                return BadRequest("This e-mail is already in use.");
+
+            if (await _db.Users.AnyAsync(u => u.Username.ToLower() == dto.Username.ToLower()))
+                return BadRequest("This username already exists.");
+
+            if (!Regex.IsMatch(dto.Username, @"^[a-zA-Z0-9_-]+$"))
+                return BadRequest("Username cannot contain special characters.");
 
             var user = new User
             {
-                Username = dto.Username,
+                Username = dto.Username.Trim(),
+                Email = dto.Email.ToLower().Trim(),
                 Password = BCrypt.Net.BCrypt.HashPassword(dto.Password),
             };
 
@@ -42,10 +52,12 @@ namespace GymApp_backend.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<LoginResponse>> Login([FromBody] LoginRequest dto)
         {
-            var user = await _db.Users.FirstOrDefaultAsync(u => u.Username == dto.Username);
+            var user = await _db.Users.FirstOrDefaultAsync(u => 
+                u.Username.ToLower() == dto.EmailOrUsername.ToLower() || 
+                u.Email.ToLower() == dto.EmailOrUsername.ToLower());
 
             if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.Password))
-                return Unauthorized("Invalid username or password.");
+                return Unauthorized("Invalid credentials.");
 
             return Ok(await CreateLoginResponseAsync(user));
         }

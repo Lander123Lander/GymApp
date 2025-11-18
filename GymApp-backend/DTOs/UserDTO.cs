@@ -11,6 +11,10 @@ namespace GymApp_backend.DTOs
         public string Username { get; set; } = string.Empty;
 
         [Required]
+        [EmailAddress(ErrorMessage = "Invalid email address format.")]
+        public string Email { get; set; } = string.Empty;
+
+        [Required]
         [MinLength(6, ErrorMessage = "Password must be at least 6 characters.")]
         public string Password { get; set; } = string.Empty;
     }
@@ -18,7 +22,7 @@ namespace GymApp_backend.DTOs
     public class LoginRequest
     {
         [Required]
-        public string Username { get; set; } = string.Empty;
+        public string EmailOrUsername { get; set; } = string.Empty;
 
         [Required]
         public string Password { get; set; } = string.Empty;
