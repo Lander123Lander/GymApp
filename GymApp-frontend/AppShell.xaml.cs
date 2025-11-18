@@ -5,7 +5,7 @@
         public AppShell()
         {
             InitializeComponent();
-            GoToAsync("//login");
+            GoToAsync("//welcome");
         }
     }
 }

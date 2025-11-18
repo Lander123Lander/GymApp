@@ -8,13 +8,17 @@
     Title="GymApp_frontend">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="Welcome"
+        Route="Welcome"
+        ContentTemplate="{DataTemplate pages:WelcomePage}" />
 
     <ShellContent
         Title="Login"
         Route="login"
         ContentTemplate="{DataTemplate pages:LoginPage}" />
 
+    <ShellContent
+        Title="Home"
+        Route="MainPage"
+        ContentTemplate="{DataTemplate local:MainPage}" />
 </Shell>
