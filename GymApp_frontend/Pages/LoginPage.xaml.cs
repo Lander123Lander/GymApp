@@ -11,7 +11,7 @@ public partial class LoginPage : ContentPage
 
     private async void OnLoginClicked(object sender, EventArgs e)
     {
-        var username = emailEntry.Text?.Trim();
+        var username = emailOrUsernameEntry.Text?.Trim();
         var password = PasswordEntry.Text;
 
         if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
@@ -21,7 +21,6 @@ public partial class LoginPage : ContentPage
             return;
         }
 
-        // TODO: Replace this with real backend call
         if (username == "test" && password == "1234")
         {
             ErrorLabel.IsVisible = false;

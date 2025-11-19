@@ -14,8 +14,8 @@
                HorizontalOptions="Center" />
 
         <Entry 
-            x:Name="emailEntry"
-            Placeholder="Email"
+            x:Name="emailOrUsernameEntry"
+            Placeholder="Email / username"
             Keyboard="Email"
             ClearButtonVisibility="WhileEditing" />
 

@@ -3,11 +3,11 @@
     "Name": "Back & Frontend",
     "Projects": [
       {
-        "Path": "GymApp-backend\\GymApp-backend.csproj",
+        "Path": "GymApp_backend\\GymApp_backend.csproj",
         "Action": "Start"
       },
       {
-        "Path": "GymApp-frontend\\GymApp-frontend.csproj",
+        "Path": "GymApp_frontend\\GymApp_frontend.csproj",
         "Action": "Start"
       }
     ]
