@@ -12,19 +12,19 @@ EXPOSE 3001
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["GymApp-backend/GymApp-backend.csproj", "GymApp-backend/"]
-RUN dotnet restore "./GymApp-backend/GymApp-backend.csproj"
+COPY ["GymApp_backend/GymApp_backend.csproj", "GymApp_backend/"]
+RUN dotnet restore "./GymApp_backend/GymApp_backend.csproj"
 COPY . .
-WORKDIR "/src/GymApp-backend"
-RUN dotnet build "./GymApp-backend.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/GymApp_backend"
+RUN dotnet build "./GymApp_backend.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./GymApp-backend.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./GymApp_backend.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "GymApp-backend.dll"]
+ENTRYPOINT ["dotnet", "GymApp_backend.dll"]

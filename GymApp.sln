@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApp-backend", "GymApp-backend\GymApp-backend.csproj", "{29F7CB61-7904-42CB-8723-8DE8FF60DC5B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApp_backend", "GymApp_backend\GymApp_backend.csproj", "{29F7CB61-7904-42CB-8723-8DE8FF60DC5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApp-frontend", "GymApp-frontend\GymApp-frontend.csproj", "{5B3B911E-6F07-48AA-B4D8-080C2AA30664}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApp_frontend", "GymApp_frontend\GymApp_frontend.csproj", "{5B3B911E-6F07-48AA-B4D8-080C2AA30664}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
