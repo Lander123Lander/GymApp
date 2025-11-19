@@ -53,4 +53,8 @@
 	<ItemGroup>
 	  <Folder Include="Services\" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\GymApp_shared\GymApp_shared.csproj" />
+	</ItemGroup>
 </Project>

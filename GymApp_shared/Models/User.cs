@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace GymApp_backend.Models
+namespace GymApp_shared.Models
 {
     public enum Role
     {

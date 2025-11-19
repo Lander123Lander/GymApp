@@ -1,4 +1,4 @@
-﻿namespace GymApp_backend.Models
+﻿namespace GymApp_shared.Models
 {
     public class MuscleGroup
     {

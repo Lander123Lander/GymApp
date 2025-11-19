@@ -1,4 +1,4 @@
-﻿using GymApp_backend.Models;
+﻿using GymApp_shared.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 

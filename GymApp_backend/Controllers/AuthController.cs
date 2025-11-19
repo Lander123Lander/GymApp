@@ -1,6 +1,6 @@
 ﻿using GymApp_backend.Data;
-using GymApp_backend.DTOs;
-using GymApp_backend.Models;
+using GymApp_shared.DTOs;
+using GymApp_shared.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;

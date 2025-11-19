@@ -1,7 +1,7 @@
-﻿using GymApp_backend.Models;
+﻿using GymApp_shared.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace GymApp_backend.DTOs
+namespace GymApp_shared.DTOs
 {
     public class RegisterRequest
     {
