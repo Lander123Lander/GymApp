@@ -9,7 +9,7 @@ public partial class WelcomePage : ContentPage
 
     private async void OnLoginClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new LoginPage());
+        await Shell.Current.GoToAsync("//Login");
     }
 
     private async void OnCreateAccountClicked(object sender, EventArgs e)

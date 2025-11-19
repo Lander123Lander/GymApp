@@ -1,15 +1,16 @@
 using GymApp_frontend.Services;
+using GymApp_shared.DTOs;
 
 namespace GymApp_frontend.Pages;
 
 public partial class LoginPage : ContentPage
 {
-    private readonly AuthService _authService;
+    private readonly IAuthService _authService;
 
-    public LoginPage()
+    public LoginPage(IAuthService authService)
     {
         InitializeComponent();
-        _authService = new AuthService();
+        _authService = authService;
     }
 
     private async void OnLoginClicked(object sender, EventArgs e)
@@ -20,30 +21,33 @@ public partial class LoginPage : ContentPage
         if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
         {
             ErrorLabel.Text = "Please fill in both fields.";
-            ErrorLabel.IsVisible = true;
             return;
         }
 
+        var request = new LoginRequest
+        {
+            EmailOrUsername = username,
+            Password = password,
+        };
+
         try
         {
-            var loginResponse = await _authService.LoginAsync(username, password);
+            var loginResponse = await _authService.Login(request);
 
-            ErrorLabel.IsVisible = false;
+            ErrorLabel.Text = "";
 
-            // TODO: Save tokens securely (SecureStorage or similar)
-            // Example:
-            // await SecureStorage.SetAsync("access_token", loginResponse.AccessToken);
-            // await SecureStorage.SetAsync("refresh_token", loginResponse.RefreshToken);
+            await SecureStorage.SetAsync("access_token", loginResponse.AccessToken);
+            await SecureStorage.SetAsync("refresh_token", loginResponse.RefreshToken);
 
-            System.Diagnostics.Debug.WriteLine($"AccessToken: {loginResponse.AccessToken}");
-            System.Diagnostics.Debug.WriteLine($"RefreshToken: {loginResponse.RefreshToken}");
-
-            await Shell.Current.GoToAsync("//main");
+            await Shell.Current.GoToAsync("//Welcome");
+        }
+        catch (Refit.ApiException ex)
+        {
+            ErrorLabel.Text = ex.Content;
         }
         catch (Exception ex)
         {
-            ErrorLabel.Text = "Invalid username or password.";
-            ErrorLabel.IsVisible = true;
+            ErrorLabel.Text = "Something went wrong";
         }
     }
 }

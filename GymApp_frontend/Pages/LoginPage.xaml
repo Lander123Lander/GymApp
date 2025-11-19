@@ -33,7 +33,6 @@
         <Label 
             x:Name="ErrorLabel"
             TextColor="Red"
-            IsVisible="False"
             HorizontalOptions="Center" />
 
     </VerticalStackLayout>

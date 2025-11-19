@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.DependencyInjection;
+using GymApp_frontend.Services;
+using GymApp_frontend.Pages;
+using Refit;
 
 namespace GymApp_frontend
 {
@@ -16,10 +18,12 @@ namespace GymApp_frontend
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            builder.Services.AddHttpClient("ApiClient", client =>
-            {
-                client.BaseAddress = new Uri("http://localhost:3000/api/");
-            });
+            builder.Services.AddTransient<WelcomePage>();
+            builder.Services.AddTransient<LoginPage>();
+
+            builder.Services
+                .AddRefitClient<IAuthService>()
+                .ConfigureHttpClient(c => c.BaseAddress = new Uri("http://10.0.2.2:3000/api"));
 
 #if DEBUG
             builder.Logging.AddDebug();
