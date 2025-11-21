@@ -39,6 +39,8 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+builder.Services.AddAuthorization();
+
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(options =>

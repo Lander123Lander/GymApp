@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="GymApp_frontend.Pages.FeedPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Feed">
+
+    <ScrollView>
+        <Label
+            Text="{Binding JsonResult}"
+            FontFamily="Courier New"
+            FontSize="14"
+            LineBreakMode="WordWrap"
+            Padding="10" />
+    </ScrollView>
+
+</ContentPage>

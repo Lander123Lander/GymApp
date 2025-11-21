@@ -7,4 +7,7 @@ public interface IAuthService
 {
     [Post("/Auth/login")]
     Task<LoginResponse> Login([Body] LoginRequest loginRequest);
+
+    [Post("/Auth/refresh")]
+    Task<LoginResponse> Refresh([Body] string refreshToken);
 }

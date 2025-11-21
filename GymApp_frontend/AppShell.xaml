@@ -21,4 +21,9 @@
         Title="Home"
         Route="Main"
         ContentTemplate="{DataTemplate local:MainPage}" />
+
+    <ShellContent
+        Title="Feed"
+        Route="Feed"
+        ContentTemplate="{DataTemplate pages:FeedPage}" />
 </Shell>

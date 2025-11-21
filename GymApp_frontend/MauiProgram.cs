@@ -25,6 +25,12 @@ namespace GymApp_frontend
                 .AddRefitClient<IAuthService>()
                 .ConfigureHttpClient(c => c.BaseAddress = new Uri("http://10.0.2.2:3000/api"));
 
+            builder.Services.AddSingleton<AuthorizedHttpHandler>();
+
+            builder.Services.AddRefitClient<IPostService>()
+                .ConfigureHttpClient(c => c.BaseAddress = new Uri("http://10.0.2.2:3000/api"))
+                .AddHttpMessageHandler<AuthorizedHttpHandler>();
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
