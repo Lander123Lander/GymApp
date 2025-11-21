@@ -22,6 +22,6 @@ namespace GymApp_shared.Models
         [JsonIgnore]
         public User User { get; set; }
 
-        public Workout Workout { get; set; }
+        public Workout? Workout { get; set; }
     }
 }
