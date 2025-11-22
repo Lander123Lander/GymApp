@@ -59,12 +59,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Controls\BottomNav.xaml.cs">
+	    <DependentUpon>BottomNav.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\FeedPage.xaml.cs">
 	    <DependentUpon>FeedPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Controls\BottomNav.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\FeedPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

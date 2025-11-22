@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GymApp_frontend.Controls.BottomNav">
+
+    <Grid HeightRequest="70"
+          BackgroundColor="{StaticResource Bg3}"
+          ColumnDefinitions="*,*,*">
+
+        <ImageButton Source="home.svg"
+                     Grid.Column="0"
+                     Command="{Binding NavigateHomeCommand}"
+                     WidthRequest="48"
+                     HeightRequest="48" />
+
+        <ImageButton Source="add.svg"
+                     Grid.Column="1"
+                     Command="{Binding NavigateSearchCommand}"
+                     WidthRequest="48"
+                     HeightRequest="48" />
+
+        <ImageButton Source="profile.svg"
+                     Grid.Column="2"
+                     Command="{Binding NavigateSettingsCommand}" 
+                     WidthRequest="48"
+                     HeightRequest="48" />
+    </Grid>
+</ContentView>

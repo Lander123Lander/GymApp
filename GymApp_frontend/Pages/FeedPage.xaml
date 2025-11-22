@@ -3,15 +3,22 @@
     x:Class="GymApp_frontend.Pages.FeedPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:GymApp_frontend.Controls"
     Title="Feed">
 
-    <ScrollView>
-        <Label
-            Text="{Binding JsonResult}"
-            FontFamily="Courier New"
-            FontSize="14"
-            LineBreakMode="WordWrap"
-            Padding="10" />
-    </ScrollView>
+    <Grid RowDefinitions="*,Auto">
+
+        <ScrollView Grid.Row="0">
+            <Label
+                Text="{Binding JsonResult}"
+                FontFamily="Courier New"
+                FontSize="14"
+                LineBreakMode="WordWrap"
+                Padding="10" />
+        </ScrollView>
+
+        <controls:BottomNav Grid.Row="1" />
+
+    </Grid>
 
 </ContentPage>
