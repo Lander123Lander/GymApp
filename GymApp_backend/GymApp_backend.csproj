@@ -28,8 +28,4 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\GymApp_shared\GymApp_shared.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -58,6 +58,8 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddHostedService<RefreshTokenCleanupService>();
 
+builder.WebHost.UseUrls("http://0.0.0.0:3000");
+
 var app = builder.Build();
 
 app.UseCors();
