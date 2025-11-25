@@ -1,7 +1,7 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
-
+import "../style/global.css";
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Slot } from 'expo-router';
 
