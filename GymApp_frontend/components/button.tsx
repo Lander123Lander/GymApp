@@ -30,7 +30,7 @@ export function Button({
     
     return (
         <TouchableOpacity
-            className={`rounded-md py-3 mb-2 w-full ${variant === "ghost" && "border"}`}
+            className={`rounded-md py-4 mb-2 w-full ${variant === "ghost" && "border"}`}
             onPress={onPress}
             disabled={disabled}
             style={[

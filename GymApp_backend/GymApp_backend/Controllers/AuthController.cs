@@ -57,7 +57,7 @@ namespace GymApp_backend.Controllers
                 u.Email.ToLower() == dto.EmailOrUsername.ToLower());
 
             if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.Password))
-                return Unauthorized("Invalid credentials.");
+                return Unauthorized("The entered email/username or password is incorrect.");
 
             return Ok(await CreateLoginResponseAsync(user));
         }
