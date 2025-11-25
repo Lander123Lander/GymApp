@@ -1,17 +1,13 @@
 import { authService } from "@/services/authService";
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import {
-    Alert,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
-} from "react-native";
+import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { useAppTheme } from "./theme/AppThemeContext";
+import { Button } from "@/components/button";
 
 export default function Login() {
     const router = useRouter();
+    const colors = useAppTheme();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -24,7 +20,10 @@ export default function Login() {
             Alert.alert("Success", "Logged in!");
             router.replace("/");
         } catch (error) {
-            Alert.alert("Login failed", error instanceof Error ? error.message : String(error));
+            Alert.alert(
+                "Login failed",
+                error instanceof Error ? error.message : String(error)
+            );
         } finally {
             setLoading(false);
         }
@@ -32,21 +31,27 @@ export default function Login() {
 
     if (loading) {
         return (
-            <View style={styles.container}>
-                <Text>Loading...</Text>
+            <View
+                className="flex-1 justify-center items-center"
+                style={{ backgroundColor: colors.bg1 }}
+            >
+                <Text style={{ color: colors.text1 }}>Loading...</Text>
             </View>
         );
     }
 
-
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Login</Text>
+        <View
+            className="flex-1 justify-center items-center px-5"
+            style={{ backgroundColor: colors.bg1 }}
+        >
+            <Text className="text-3xl font-bold mb-8" style={{ color: colors.text1 }}>Login</Text>
 
             <TextInput
-                style={styles.input}
+                className="w-full h-12 px-4 mb-4 rounded-xl border"
+                style={{ color: colors.text1, borderColor: colors.bg4 }}
                 placeholder="Email"
-                placeholderTextColor="#888"
+                placeholderTextColor={colors.text2}
                 keyboardType="email-address"
                 autoCapitalize="none"
                 onChangeText={setEmail}
@@ -54,57 +59,16 @@ export default function Login() {
             />
 
             <TextInput
-                style={styles.input}
+                className="w-full h-12 px-4 mb-4 rounded-xl border"
+                style={{ color: colors.text1, borderColor: colors.bg4 }}
                 placeholder="Password"
-                placeholderTextColor="#888"
+                placeholderTextColor={colors.text2}
                 secureTextEntry
                 onChangeText={setPassword}
                 value={password}
                 autoCapitalize="none"
             />
-
-            <TouchableOpacity style={styles.button} onPress={onLogin}>
-                <Text style={styles.buttonText}>Log In</Text>
-            </TouchableOpacity>
+            <Button label="Log in" onPress={onLogin} variant="primary" />
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        padding: 20,
-        backgroundColor: "#fff",
-    },
-    title: {
-        fontSize: 28,
-        fontWeight: "bold",
-        marginBottom: 30,
-    },
-    input: {
-        width: "100%",
-        height: 50,
-        paddingHorizontal: 15,
-        marginBottom: 15,
-        borderWidth: 1,
-        borderColor: "#ccc",
-        borderRadius: 10,
-        fontSize: 16,
-    },
-    button: {
-        backgroundColor: "#007AFF",
-        paddingVertical: 14,
-        paddingHorizontal: 40,
-        borderRadius: 10,
-        marginTop: 10,
-        width: "100%",
-        alignItems: "center",
-    },
-    buttonText: {
-        color: "white",
-        fontSize: 18,
-        fontWeight: "600",
-    },
-});

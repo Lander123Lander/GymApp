@@ -1,17 +1,15 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { StatusBar } from "expo-status-bar";
+import "react-native-reanimated";
 import "../style/global.css";
-import { useColorScheme } from '@/hooks/use-color-scheme';
-import { Slot } from 'expo-router';
+import { Slot } from "expo-router";
+import { AppThemeProvider } from "./theme/AppThemeContext";
+import { DarkTheme } from "@/style/AppTheme";
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Slot />
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+    return (
+        <AppThemeProvider value={DarkTheme}>
+            <Slot />
+            <StatusBar style="auto" />
+        </AppThemeProvider>
+    );
 }
