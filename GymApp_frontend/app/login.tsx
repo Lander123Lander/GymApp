@@ -9,10 +9,10 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
-import { useAppTheme } from "./theme/AppThemeContext";
 import { Button } from "@/components/button";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LoadingIndicator } from "@/components/loadingIndicator";
+import useAppTheme from "./theme/AppThemeContext";
 
 export default function Login() {
     const router = useRouter();

@@ -3,7 +3,7 @@ import { createContext, useContext } from "react";
 
 const AppThemeContext = createContext<AppTheme | undefined>(undefined);
 
-export const useAppTheme = () => {
+export default function useAppTheme() {
     const ctx = useContext(AppThemeContext);
     if (!ctx) {
         throw new Error("useAppTheme must be used inside <AppThemeProvider>");

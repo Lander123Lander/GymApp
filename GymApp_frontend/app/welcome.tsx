@@ -1,8 +1,8 @@
 import { useRouter } from "expo-router";
 import { View, Text } from "react-native";
-import { useAppTheme } from "./theme/AppThemeContext";
-import { Button } from "@/components/button";
 import { SafeAreaView } from "react-native-safe-area-context";
+import useAppTheme from "./theme/AppThemeContext";
+import { Button } from "@/components/button";
 
 export default function Welcome() {
     const router = useRouter();

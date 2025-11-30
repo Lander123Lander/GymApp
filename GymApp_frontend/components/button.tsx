@@ -7,7 +7,7 @@ import {
     TextStyle,
     GestureResponderEvent,
 } from "react-native";
-import { useAppTheme } from "../app/theme/AppThemeContext";
+import useAppTheme from "../app/theme/AppThemeContext";
 
 type ButtonProps = {
     variant?: "primary" | "ghost";
