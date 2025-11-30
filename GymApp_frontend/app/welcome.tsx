@@ -1,6 +1,5 @@
 import { useRouter } from "expo-router";
 import { View, Text } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import useAppTheme from "./theme/AppThemeContext";
 import { Button } from "@/components/button";
 
@@ -9,7 +8,7 @@ export default function Welcome() {
     const colors = useAppTheme();
 
     return (
-        <SafeAreaView
+        <View
             className="flex-1 justify-center items-center px-6 gap-6"
             style={{ backgroundColor: colors.bg1 }}
         >
@@ -43,6 +42,6 @@ export default function Welcome() {
                     variant="ghost"
                 />
             </View>
-        </SafeAreaView>
+        </View>
     );
 }

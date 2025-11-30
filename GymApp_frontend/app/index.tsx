@@ -4,7 +4,6 @@ import { useRouter } from "expo-router";
 import * as SecureStore from "expo-secure-store"; // or AsyncStorage
 import { useEffect, useState } from "react";
 import { Button, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
     const router = useRouter();
@@ -39,7 +38,7 @@ export default function Index() {
 
     if (checkingAuth) {
         return (
-            <SafeAreaView
+            <View
                 style={{
                     flex: 1,
                     justifyContent: "center",
@@ -47,18 +46,18 @@ export default function Index() {
                 }}
             >
                 <LoadingIndicator />
-            </SafeAreaView>
+            </View>
         );
     }
 
     return (
-        <SafeAreaView className="flex-1 bg-white">
+        <View className="flex-1 bg-white">
             <View className="flex-1 justify-center items-center">
                 <Text className="mb-4">feed</Text>
                 <Button title="Logout" onPress={onLogout} />
             </View>
 
             <BottomNav />
-        </SafeAreaView>
+        </View>
     );
 }

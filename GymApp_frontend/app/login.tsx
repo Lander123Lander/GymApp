@@ -10,7 +10,6 @@ import {
     View,
 } from "react-native";
 import { Button } from "@/components/button";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { LoadingIndicator } from "@/components/loadingIndicator";
 import useAppTheme from "./theme/AppThemeContext";
 
@@ -54,7 +53,7 @@ export default function Login() {
     };
 
     return (
-        <SafeAreaView
+        <View
             className="flex-1 justify-center items-center px-6"
             style={{ backgroundColor: colors.bg1, position: "relative" }}
         >
@@ -109,9 +108,7 @@ export default function Login() {
             </Text>
             <Button label="Log in" onPress={onLogin} variant="primary" />
 
-            {loading && (
-                <LoadingIndicator />
-            )}
-        </SafeAreaView>
+            {loading && <LoadingIndicator />}
+        </View>
     );
 }

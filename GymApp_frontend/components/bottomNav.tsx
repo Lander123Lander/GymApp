@@ -1,63 +1,39 @@
 import useAppTheme from "@/app/theme/AppThemeContext";
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-
+import { View, TouchableOpacity } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 
 export default function BottomNav() {
-  const colors = useAppTheme();
-  const [activeTab, setActiveTab] = useState("Home");
+    const colors = useAppTheme();
+    const [activeTab, setActiveTab] = useState("Home");
 
-  const tabs = [
-    { name: "Home" },
-    { name: "Search" },
-    { name: "Profile" },
-  ];
+    const tabs: { name: string; icon: "home" | "search" | "person" }[] = [
+        { name: "Home", icon: "home" },
+        { name: "Search", icon: "search" },
+        { name: "Profile", icon: "person" },
+    ];
 
-  return (
-    <SafeAreaView
-      style={{
-        backgroundColor: colors.bg1,
-        borderTopColor: colors.bg4,
-        borderTopWidth: 1,
-      }}
-    >
-      <View style={styles.bottomNav}>
-        {tabs.map((tab) => (
-          <TouchableOpacity
-            key={tab.name}
-            style={[
-              styles.tabButton,
-              {
-                backgroundColor: activeTab === tab.name ? colors.primary : colors.bg1,
-              },
-            ]}
-            onPress={() => setActiveTab(tab.name)}
-          >
-            <Text
-              style={{
-                color: activeTab === tab.name ? colors.text1 : colors.text2,
-                fontWeight: activeTab === tab.name ? "bold" : "normal",
-                fontSize: 16,
-              }}
-            >
-              {tab.name}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </View>
-    </SafeAreaView>
-  );
+    return (
+        <View className="flex-row py-6" style={{ backgroundColor: colors.bg1 }}>
+            {tabs.map((tab) => {
+                const isActive = activeTab === tab.name;
+                return (
+                    <TouchableOpacity
+                        key={tab.name}
+                        className="flex-1 justify-center items-center"
+                        style={{
+                            backgroundColor: colors.bg1,
+                        }}
+                        onPress={() => setActiveTab(tab.name)}
+                    >
+                        <MaterialIcons
+                            name={tab.icon}
+                            size={28}
+                            color={isActive ? colors.primary : colors.text2}
+                        />
+                    </TouchableOpacity>
+                );
+            })}
+        </View>
+    );
 }
-
-const styles = StyleSheet.create({
-  bottomNav: {
-    flexDirection: "row",
-    height: 60,
-  },
-  tabButton: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
