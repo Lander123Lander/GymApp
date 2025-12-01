@@ -2,11 +2,9 @@ import { authService } from "@/services/authService";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import {
-    ActivityIndicator,
     Alert,
     Text,
     TextInput,
-    TouchableOpacity,
     View,
 } from "react-native";
 import { Button } from "@/components/button";
