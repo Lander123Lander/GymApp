@@ -23,10 +23,16 @@ export default function RegisterGender({
                     className="text-4xl font-bold text-center"
                     style={{ color: colors.text1 }}
                 >
-                    What is your gender?
+                    What's your gender?
                 </Text>
                 <Text
-                    className="text-lg mb-20 text-center"
+                    className="text-lg text-center"
+                    style={{ color: colors.text2 }}
+                >
+                    This will be used to calibrate your statistics.
+                </Text>
+                <Text
+                    className="text-lg mb-14 text-center"
                     style={{ color: colors.text2 }}
                 >
                     This can be changed at any time.

@@ -1,14 +1,6 @@
 import RegisterUnit from "@/components/register/registerUnit";
 import React, { useEffect, useState } from "react";
-import {
-    View,
-    Text,
-    TextInput,
-    Button,
-    TouchableOpacity,
-    BackHandler,
-    Alert,
-} from "react-native";
+import { View, BackHandler } from "react-native";
 import useAppTheme from "./context/AppThemeContext";
 import RegisterGender from "@/components/register/registerGender";
 
@@ -18,7 +10,9 @@ export default function RegistrationForm() {
     const [step, setStep] = React.useState(1);
 
     const [unit, setUnit] = useState<"kg" | "lbs">("kg");
-    const [gender, setGender] = useState<"m" | "f" | "x" | "u" | undefined>(undefined);
+    const [gender, setGender] = useState<"m" | "f" | "x" | "u" | undefined>(
+        undefined
+    );
 
     useEffect(() => {
         const onBackPress = () => {
@@ -50,7 +44,11 @@ export default function RegistrationForm() {
                 <RegisterUnit unit={unit} setUnit={setUnit} goNext={goNext} />
             )}
             {step === 2 && (
-                <RegisterGender gender={gender} setGender={setGender} goNext={goNext} />
+                <RegisterGender
+                    gender={gender}
+                    setGender={setGender}
+                    goNext={goNext}
+                />
             )}
         </View>
     );
