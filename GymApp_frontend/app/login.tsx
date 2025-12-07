@@ -101,7 +101,9 @@ export default function Login() {
             >
                 {errorMessage}
             </Text>
-            <Button label="Log in" onPress={onLogin} variant="primary" />
+            <Button onPress={onLogin} variant="primary">
+                Log in
+            </Button>
 
             {loading && <LoadingIndicator />}
         </View>

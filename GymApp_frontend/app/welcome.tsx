@@ -26,7 +26,12 @@ export default function Welcome() {
                 >
                     Don’t have an account yet?
                 </Text>
-                <Button label="Create account" variant="primary" />
+                <Button
+                    onPress={() => router.push("/register")}
+                    variant="primary"
+                >
+                    Create account
+                </Button>
             </View>
 
             <View className="justify-center w-full mb-4">
@@ -36,11 +41,9 @@ export default function Welcome() {
                 >
                     Already have an account?
                 </Text>
-                <Button
-                    label="Log in"
-                    onPress={() => router.push("/login")}
-                    variant="ghost"
-                />
+                <Button onPress={() => router.push("/login")} variant="ghost">
+                    Log in
+                </Button>
             </View>
         </View>
     );

@@ -23,7 +23,7 @@ export default function Profile() {
             <View className="flex-1 bg-white">
                 <View className="flex-1 justify-center items-center">
                     <Text className="mb-4">Profile</Text>
-                    <Button label="Logout" onPress={onLogout} />
+                    <Button onPress={onLogout}>Log out</Button>
                 </View>
                 <BottomNav />
             </View>

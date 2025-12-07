@@ -11,7 +11,11 @@ type AuthContextType = {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-export function AuthProvider({ children }: { children: React.ReactNode }) {
+export default function AuthProvider({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
     const [user, setUser] = useState<any | null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -38,7 +42,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const login = async (email: string, password: string) => {
         const data = await authService.login(email, password);
-        
+
         if (data.accessToken) {
             await SecureStore.setItemAsync("accessToken", data.accessToken);
         }

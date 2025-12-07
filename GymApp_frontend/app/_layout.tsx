@@ -10,7 +10,7 @@ import {
 import React from "react";
 import useAppTheme, { AppThemeProvider } from "./context/AppThemeContext";
 import { View } from "react-native";
-import { AuthProvider } from "./context/AuthContext";
+import AuthProvider from "./context/AuthContext";
 
 function AppContainer({ children }: any) {
     const insets = useSafeAreaInsets();
@@ -18,6 +18,7 @@ function AppContainer({ children }: any) {
 
     return (
         <View style={{ flex: 1, backgroundColor: colors.bg1 }}>
+            <View style={{ height: insets.top, backgroundColor: colors.bg1 }} />
             {children}
             <View
                 style={{ height: insets.bottom, backgroundColor: colors.bg1 }}
@@ -28,15 +29,13 @@ function AppContainer({ children }: any) {
 
 export default function RootLayout() {
     return (
-        <SafeAreaProvider>
-            <AppThemeProvider value={DarkTheme}>
-                <AuthProvider>
-                    <AppContainer>
-                        <Slot />
-                        <StatusBar style="auto" />
-                    </AppContainer>
-                </AuthProvider>
-            </AppThemeProvider>
-        </SafeAreaProvider>
+        <AppThemeProvider value={DarkTheme}>
+            <AuthProvider>
+                <AppContainer>
+                    <Slot />
+                    <StatusBar style="auto" />
+                </AppContainer>
+            </AuthProvider>
+        </AppThemeProvider>
     );
 }
