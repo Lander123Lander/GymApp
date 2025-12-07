@@ -1,8 +1,6 @@
 import { View, Text } from "react-native";
 import { Button } from "../button";
 import useAppTheme from "@/app/context/AppThemeContext";
-import { useEffect } from "react";
-import { MaterialIcons } from "@expo/vector-icons";
 
 export default function RegisterUnit({
     unit,
@@ -37,7 +35,15 @@ export default function RegisterUnit({
                             variant={unit === "kg" ? "active" : "inactive"}
                             className="h-40"
                         >
-                            <Text className="font-bold text-2xl">
+                            <Text
+                                className="font-bold text-2xl"
+                                style={{
+                                    color:
+                                        unit === "kg"
+                                            ? colors.bg1
+                                            : colors.text2,
+                                }}
+                            >
                                 Kilograms
                             </Text>
                         </Button>
@@ -48,7 +54,17 @@ export default function RegisterUnit({
                             variant={unit === "lbs" ? "active" : "inactive"}
                             className="h-40"
                         >
-                            <Text className="font-bold text-2xl">Pounds</Text>
+                            <Text
+                                className="font-bold text-2xl"
+                                style={{
+                                    color:
+                                        unit === "lbs"
+                                            ? colors.bg1
+                                            : colors.text2,
+                                }}
+                            >
+                                Pounds
+                            </Text>
                         </Button>
                     </View>
                 </View>

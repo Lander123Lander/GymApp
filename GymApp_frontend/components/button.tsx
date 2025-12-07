@@ -5,6 +5,7 @@ import {
     ViewStyle,
     TextStyle,
     GestureResponderEvent,
+    View,
 } from "react-native";
 import useAppTheme from "../app/context/AppThemeContext";
 
@@ -67,12 +68,18 @@ export function Button({
                 borderColor && { borderColor, borderWidth: 1 },
             ]}
         >
-            <Text
-                className={`justify-center items-center text-lg font-semibold text-center ${textClassName}`}
-                style={{ color: textColor }}
-            >
-                {children}
-            </Text>
+            <View className="justify-center items-center">
+                {typeof children === "string" ? (
+                    <Text
+                        className={`text-lg font-semibold text-center ${textClassName}`}
+                        style={{ color: textColor }}
+                    >
+                        {children}
+                    </Text>
+                ) : (
+                    children
+                )}
+            </View>
         </TouchableOpacity>
     );
 }
