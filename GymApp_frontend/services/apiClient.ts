@@ -2,7 +2,6 @@ import * as SecureStore from "expo-secure-store";
 
 const API_URL = process.env.EXPO_PUBLIC_API_URL || "";
 
-
 async function refresh() {
     console.log("Refreshing token...");
 
@@ -19,7 +18,9 @@ async function refresh() {
 
     if (!response.ok) {
         const errorText = await response.text();
-        throw new Error(errorText || "Something went wrong during token refresh.");
+        throw new Error(
+            errorText || "Something went wrong during token refresh."
+        );
     }
 
     const data = await response.json();
@@ -41,7 +42,7 @@ async function fetchWithAuth(url: string, options: RequestInit = {}) {
     if (!accessToken) {
         console.error(`No access token found for FETCH ${url}`);
         return;
-    } 
+    }
 
     const headers = new Headers(options.headers);
     headers.set("Authorization", `Bearer ${accessToken}`);
@@ -69,19 +70,17 @@ async function fetchWithAuth(url: string, options: RequestInit = {}) {
 }
 
 async function fetchWithoutAuth(url: string, options: RequestInit = {}) {
-  const headers = new Headers(options.headers);
-  headers.set("Content-Type", "application/json");
+    const headers = new Headers(options.headers);
+    headers.set("Content-Type", "application/json");
 
-  console.log(API_URL + url);
+    const response = await fetch(API_URL + url, { ...options, headers });
 
-  const response = await fetch(API_URL + url, { ...options, headers });
+    if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(errorText || "Something went wrong.");
+    }
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(errorText || "Something went wrong.");
-  }
-
-  return response.json();
+    return response.json();
 }
 
 export const api = {

@@ -37,11 +37,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }, []);
 
     const login = async (email: string, password: string) => {
-        console.log("AuthContext login called");
-
         const data = await authService.login(email, password);
-        console.log(data);
-
+        
         if (data.accessToken) {
             await SecureStore.setItemAsync("accessToken", data.accessToken);
         }
