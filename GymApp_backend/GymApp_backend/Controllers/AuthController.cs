@@ -1,10 +1,12 @@
 ﻿using GymApp_backend.Data;
 using GymApp_shared.DTOs;
 using GymApp_shared.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 
@@ -79,6 +81,32 @@ namespace GymApp_backend.Controllers
             await _db.SaveChangesAsync();
 
             return Ok(await CreateLoginResponseAsync(user));
+        }
+
+        [Authorize]
+        [HttpGet("me")]
+        public async Task<ActionResult<UserMeResponse>> Me()
+        {
+            var userId = User.GetUserId();
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
+
+            var user = await _db.Users
+                .Where(u => u.UserID == userId)
+                .Select(u => new UserMeResponse
+                {
+                    Id = u.UserID,
+                    Username = u.Username,
+                    Email = u.Email
+                })
+                .FirstOrDefaultAsync();
+
+            if (user == null)
+                return Unauthorized();
+
+            return Ok(user);
         }
 
 

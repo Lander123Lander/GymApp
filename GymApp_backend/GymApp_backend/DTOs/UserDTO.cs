@@ -33,4 +33,11 @@ namespace GymApp_shared.DTOs
         public String AccessToken { get; set; }
         public String RefreshToken { get; set; }
     }
+
+    public class UserMeResponse
+    {
+        public Guid Id { get; set; }
+        public string Username { get; set; } = null!;
+        public string Email { get; set; } = null!;
+    }
 }
