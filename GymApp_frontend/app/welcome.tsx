@@ -1,6 +1,6 @@
 import { useRouter } from "expo-router";
 import { View, Text } from "react-native";
-import useAppTheme from "./theme/AppThemeContext";
+import useAppTheme from "./context/AppThemeContext";
 import { Button } from "@/components/button";
 
 export default function Welcome() {

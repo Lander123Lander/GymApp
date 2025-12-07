@@ -1,19 +1,16 @@
 import { authService } from "@/services/authService";
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import {
-    Alert,
-    Text,
-    TextInput,
-    View,
-} from "react-native";
+import { Alert, Text, TextInput, View } from "react-native";
 import { Button } from "@/components/button";
 import { LoadingIndicator } from "@/components/loadingIndicator";
-import useAppTheme from "./theme/AppThemeContext";
+import useAppTheme from "./context/AppThemeContext";
+import { useAuth } from "./context/AuthContext";
 
 export default function Login() {
     const router = useRouter();
     const colors = useAppTheme();
+    const { login } = useAuth();
 
     const [emailOrUsername, setEmailOrUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -36,7 +33,7 @@ export default function Login() {
 
         setLoading(true);
         try {
-            await authService.login(emailOrUsername, password);
+            await login(emailOrUsername, password);
             Alert.alert("Success", "Logged in!");
             router.replace("/");
         } catch (error) {

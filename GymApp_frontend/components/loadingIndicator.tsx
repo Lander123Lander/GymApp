@@ -1,4 +1,4 @@
-import useAppTheme from "@/app/theme/AppThemeContext";
+import useAppTheme from "@/app/context/AppThemeContext";
 import { ActivityIndicator, View } from "react-native";
 
 export function LoadingIndicator() {

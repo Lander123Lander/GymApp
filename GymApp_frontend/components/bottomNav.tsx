@@ -1,4 +1,4 @@
-import useAppTheme from "@/app/theme/AppThemeContext";
+import useAppTheme from "@/app/context/AppThemeContext";
 import React from "react";
 import { View, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";

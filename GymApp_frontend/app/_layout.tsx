@@ -1,16 +1,16 @@
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 import "../style/global.css";
-import { Slot, useRouter } from "expo-router";
+import { Slot } from "expo-router";
 import { DarkTheme } from "@/style/AppTheme";
 import {
     SafeAreaProvider,
     useSafeAreaInsets,
 } from "react-native-safe-area-context";
-import React, { useEffect, useState } from "react";
-import useAppTheme, { AppThemeProvider } from "./theme/AppThemeContext";
+import React from "react";
+import useAppTheme, { AppThemeProvider } from "./context/AppThemeContext";
 import { View } from "react-native";
-import * as SecureStore from "expo-secure-store";
+import { AuthProvider } from "./context/AuthContext";
 
 function AppContainer({ children }: any) {
     const insets = useSafeAreaInsets();
@@ -27,35 +27,15 @@ function AppContainer({ children }: any) {
 }
 
 export default function RootLayout() {
-    const router = useRouter();
-    const [checkingAuth, setCheckingAuth] = useState(true);
-
-    useEffect(() => {
-        async function checkAuth() {
-            try {
-                const token = await SecureStore.getItemAsync("accessToken");
-
-                if (!token) {
-                    router.replace("/welcome");
-                }
-            } catch (e) {
-                console.error("Auth check failed:", e);
-                router.replace("/welcome");
-            } finally {
-                setCheckingAuth(false);
-            }
-        }
-
-        checkAuth();
-    }, []);
-
     return (
         <SafeAreaProvider>
             <AppThemeProvider value={DarkTheme}>
-                <AppContainer>
-                    <Slot />
-                    <StatusBar style="auto" />
-                </AppContainer>
+                <AuthProvider>
+                    <AppContainer>
+                        <Slot />
+                        <StatusBar style="auto" />
+                    </AppContainer>
+                </AuthProvider>
             </AppThemeProvider>
         </SafeAreaProvider>
     );
